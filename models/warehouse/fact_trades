@@ -1,3 +1,10 @@
+WITH raw AS (
+  SELECT
+    *
+    ,ROW_NUMBER() OVER (PARTITION BY trade_id ORDER BY trade_updated_time DESC) AS rn -- take latest data
+  FROM stg_trades
+)
+
 SELECT
   trade_id
   ,user_id
@@ -8,4 +15,6 @@ SELECT
   ,status
   ,trade_created_time
   ,trade_updated_time
-FROM stg_trades
+FROM raw
+WHERE 1=1
+  AND rn = 1
