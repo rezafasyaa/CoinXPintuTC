@@ -1,0 +1,11 @@
+SELECT
+  trade_id
+  ,user_id
+  ,token_id
+  ,side
+  ,price_usd
+  ,quantity
+  ,status
+  ,trade_created_time
+  ,trade_updated_time
+FROM stg_trades
