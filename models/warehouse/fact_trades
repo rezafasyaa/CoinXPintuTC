@@ -1,7 +1,7 @@
 WITH raw AS (
   SELECT
     *
-    ,ROW_NUMBER() OVER (PARTITION BY trade_id ORDER BY trade_updated_time DESC) AS rn -- take latest data
+    ,ROW_NUMBER() OVER (PARTITION BY trade_id ORDER BY trade_updated_time DESC) AS rn -- take latest update
   FROM stg_trades
 )
 
@@ -12,6 +12,7 @@ SELECT
   ,side
   ,price_usd
   ,quantity
+  ,(price_usd*quantity) AS amount_usd
   ,status
   ,trade_created_time
   ,trade_updated_time
