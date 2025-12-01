@@ -6,7 +6,7 @@
     ,COUNT(trade_id) AS shares_freq
     ,COUNT(quantity) AS shares_count
     ,SUM(amount_usd) AS shares_amount
-  FROM fact_trades
+  FROM warehouse.fact_trades
   WHERE 1=1
     AND status = 'FILLED'
   GROUP BY 1,2,3,4
