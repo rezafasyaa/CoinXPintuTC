@@ -6,7 +6,7 @@ WITH monthly_token_record AS (
     ,COUNT(trade_id) AS shares_freq
     ,COUNT(quantity) AS shares_qty
     ,SUM(amount_usd) AS shares_amount
-  FROM fact_trades
+  FROM warehouse.fact_trades
   WHERE 1=1
     and status = 'FILLED'
   GROUP BY 1,2,3
@@ -19,7 +19,7 @@ WITH monthly_token_record AS (
     ,COUNT(trade_id) AS total_shares_freq
     ,COUNT(quantity) AS total_shares_qty
     ,SUM(amount_usd) AS total_shares_amount
-  FROM fact_trades
+  FROM warehouse.fact_trades
   WHERE 1=1
     and status = 'FILLED'
   GROUP BY 1,2
