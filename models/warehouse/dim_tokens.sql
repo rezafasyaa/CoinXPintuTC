@@ -3,4 +3,4 @@ SELECT
   token_id
   ,token_name
   ,category
-FROM stg_tokens
+FROM staging.stg_tokens
