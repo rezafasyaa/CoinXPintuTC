@@ -3,4 +3,4 @@ SELECT
   user_id
   ,region
   ,signup_date
-FROM stg_users
+FROM staging.stg_users
