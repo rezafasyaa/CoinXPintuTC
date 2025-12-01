@@ -2,7 +2,7 @@ WITH raw AS (
   SELECT
     *
     ,ROW_NUMBER() OVER (PARTITION BY transfer_id ORDER BY transfer_updated_time DESC) AS rn -- take latest update
-  FROM stg_p2p_transfers
+  FROM staging.stg_p2p_transfers
 )
 
 SELECT
