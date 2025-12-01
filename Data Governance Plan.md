@@ -1,4 +1,5 @@
 -- Objectives --
+
 Ensuring:
 1. Completeness: Expected all data is present, checking for missing records or mandatory fields.
 2. Accuracy: Measures the data correctly reflects the real-world object or event it describes.
@@ -13,12 +14,14 @@ Ensuring:
 3. Clear Escalation Mechanisms
 
 -- Roles & Responsibilities --
+
 Data Engineer
 1. Own data pipelines and ETL/ELT process
 2. Maintain SLAs for database update
 3. Investigate any pipeline failures and create postmortem for major incidents
 4. Manage database schemas, updates, review and commit approval
 5. Maintain log/documentation for any changes related to data pipelines, databases schemas, and databases systems
+
 
 Data Analyst/Business Intelligence
 1. Own metric logic and definitions (e.g. active users, users retention, product usage, trading volume)
@@ -28,6 +31,7 @@ Data Analyst/Business Intelligence
 5. Maintain log/documentation for any changes related to owned metric, data models, and dashboards
 
 -- Updates & Changes Version Control --
+
 All updates and changes follow:
 1. Develop updates and/or changes on personal branch
 2. Update the Log/Docs
@@ -36,3 +40,14 @@ All updates and changes follow:
 5. Higher review by Data Engineer team
 6. Reverse compatible releases
 7. Release
+
+-- Monitoring --
+
+1. Track job run success/failure
+2. Track last_update_timestamp for each table
+3. Check data volume (current record count vs. historical record count)
+
+Alerts sent to Slack/email if:
+1. pipelines fail
+2. job stale beyond SLA
+3. sudden drop/spike
