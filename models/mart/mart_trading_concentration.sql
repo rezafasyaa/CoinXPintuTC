@@ -6,6 +6,8 @@ WITH monthly_token_record AS (
     ,COUNT(quantity) AS shares_count
     ,SUM(amount_usd) AS shares_amount
   FROM fact_trades
+  WHERE 1=1
+    and status = 'FILLED'
   GROUP BY 1,2
 )
 
@@ -16,6 +18,8 @@ WITH monthly_token_record AS (
     ,COUNT(quantity) AS total_shares_count
     ,SUM(amount_usd) AS total_shares_amount
   FROM fact_trades
+  WHERE 1=1
+    and status = 'FILLED'
   GROUP BY 1
 )
 
@@ -33,4 +37,4 @@ FROM monthly_token_record mtr
 JOIN monthly_record mr
   ON mr.month_date = mtr.month_date
   AND mr.side = mtr.side
-ORDER BY 1
+ORDER BY 1,2,3
