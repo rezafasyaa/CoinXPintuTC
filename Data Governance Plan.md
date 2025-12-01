@@ -48,6 +48,6 @@ All updates and changes follow:
 3. Check data volume (current record count vs. historical record count)
 
 Alerts sent to Slack/email if:
-1. pipelines fail
-2. job stale beyond SLA
-3. sudden drop/spike
+1. Pipelines fail
+2. Job stale beyond SLA
+3. Sudden drop/spike
