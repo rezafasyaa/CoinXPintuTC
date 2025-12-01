@@ -1,0 +1,13 @@
+  SELECT
+    DATE_TRUNC('month',trade_created_time) AS month_date  
+    ,token_id
+    ,user_id
+    ,side
+    ,COUNT(trade_id) AS shares_freq
+    ,COUNT(quantity) AS shares_count
+    ,SUM(amount_usd) AS shares_amount
+  FROM fact_trades
+  WHERE 1=1
+    AND status = 'FILLED'
+  GROUP BY 1,2,3,4
+  ORDER BY 1,2,3,4
