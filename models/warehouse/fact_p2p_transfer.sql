@@ -1,4 +1,4 @@
-WITH raw AS (
+WITH cte_raw AS (
   SELECT
     *
     ,ROW_NUMBER() OVER (PARTITION BY transfer_id ORDER BY transfer_updated_time DESC) AS rn -- take latest update
@@ -14,6 +14,6 @@ SELECT
   ,status
   ,transfer_created_time
   ,transfer_updated_time
-FROM raw
+FROM cte_raw
 WHERE 1=1
   AND rn = 1
