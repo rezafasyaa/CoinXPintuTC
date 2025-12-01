@@ -2,7 +2,9 @@ WITH monthly_token_amount AS (
   SELECT
     token_id
     ,DATE_TRUNC('month',trade_created_time) AS month_date
-    ,SUM(amount_usd) AS token_amount
+    ,side
+    ,count(trade_id) AS trade_count
+    ,SUM(amount_usd) AS trade_amount
   FROM fact_trades
   GROUP BY 1,2
 )
@@ -10,7 +12,9 @@ WITH monthly_token_amount AS (
 ,monthly_amount AS (
   SELECT 
     DATE_TRUNC('month',trade_created_time) AS month_date
-    ,SUM(amount_usd) AS total_amount
+    ,side
+    ,count(trade_id) AS trade_count
+    ,SUM(amount_usd) AS trade_amount
   FROM fact_trades
   GROUP BY 1
 )
@@ -24,4 +28,5 @@ SELECT
 FROM monthly_token_amount mta
 JOIN monthly_amount ma
   ON ma.month_date = mta.month_date
+  AND ma.side = mta.side
 ORDER BY 1
