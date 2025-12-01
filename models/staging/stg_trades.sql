@@ -8,4 +8,4 @@ SELECT
   ,CAST(status as STRING) AS status
   ,TIMESTAMP(trade_created_time) AS trade_created_time
   ,TIMESTAMP(trade_updated_time) AS trade_updated_time
-FROM raw_trades
+FROM raw.raw_trades
