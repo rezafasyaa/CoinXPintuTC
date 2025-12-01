@@ -14,7 +14,6 @@ WITH cte_p2p_trf_raw AS (
   FROM warehouse.fact_p2p_transfer
   WHERE 1=1
     AND status = 'SUCCESS'
-  GROUP BY 1
   )
 
 ,cte_p2p_trf_fix AS (
