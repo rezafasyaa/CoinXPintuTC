@@ -1,8 +1,8 @@
-WITH raw AS (
+WITH cte_raw AS (
   SELECT
     *
     ,ROW_NUMBER() OVER (PARTITION BY trade_id ORDER BY trade_updated_time DESC) AS rn -- take latest update
-  FROM stg_trades
+  FROM staging.stg_trades
 )
 
 SELECT
@@ -16,6 +16,6 @@ SELECT
   ,status
   ,trade_created_time
   ,trade_updated_time
-FROM raw
+FROM cte_raw
 WHERE 1=1
   AND rn = 1
