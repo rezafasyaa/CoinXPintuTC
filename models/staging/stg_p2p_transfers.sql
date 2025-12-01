@@ -7,4 +7,4 @@ SELECT
   ,CAST(status AS STRING) AS status
   ,TIMESTAMP(transfer_created_time) AS transfer_created_time
   ,TIMESTAMP(transfer_updated_time) AS transfer_updated_time
-FROM raw_p2p_transfers
+FROM raw.raw_p2p_transfers
